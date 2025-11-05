@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information Systems Hub - Interactive Learning Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0f;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #e5e7eb;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Hero Section */
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+            color: white;
+            padding: 96px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 24px;
+            position: relative;
+        }
+
+        .hero-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .main-heading {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            position: relative;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 32px;
+            opacity: 0.9;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+            color: white;
+            padding: 20px 32px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Topics Section */
+        .topics-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(90deg, #8b5cf6 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #9ca3af;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+
+        .topic-card {
+            background: rgba(31, 41, 55, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .topic-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+            border-color: rgba(139, 92, 246, 0.5);
+            background: rgba(31, 41, 55, 0.8);
+        }
+
+        .topic-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 16px rgba(139, 92, 246, 0.3);
+        }
+
+        .topic-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: white;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .topic-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f3f4f6;
+            margin-bottom: 12px;
+        }
+
+        .topic-description {
+            color: #9ca3af;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .learn-more {
+            color: #a78bfa;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Visual Learning Section - Removed from HTML for brevity, keeping CSS in case needed */
+        .visual-section {
+            background: #111827;
+            padding: 80px 24px;
+        }
+
+        .visual-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .visual-card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .visual-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .visual-card img {
+            width: 100%;
+            height: 256px;
+            object-fit: cover;
+        }
+
+        .visual-content {
+            padding: 24px;
+        }
+
+        .visual-content.blue {
+            background: linear-gradient(135deg, #1e3a8a 0%, #581c87 100%);
+        }
+
+        .visual-content.green {
+            background: linear-gradient(135deg, #065f46 0%, #0e7490 100%);
+        }
+
+        .visual-content.orange {
+            background: linear-gradient(135deg, #92400e 0%, #991b1b 100%);
+        }
+
+        .visual-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #f3f4f6;
+        }
+
+        .visual-content p {
+            color: #d1d5db;
+        }
+
+        /* Footer */
+        .footer {
+            background: #030712;
+            color: white;
+            padding: 48px 24px;
+            text-align: center;
+            border-top: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .footer p {
+            color: #6b7280;
+        }
+
+        /* Topic Detail Page */
+        .detail-page {
+            min-height: 100vh;
+            background: #0a0a0f;
+        }
+
+        .detail-header {
+            background: linear-gradient(90deg, #1e1b4b 0%, #581c87 100%);
+            color: white;
+            /* FIX: Static padding to prevent collapsing effect */
+            padding: 16px 24px; 
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+            /* Removed transition for static header */
+        }
+        
+        /* FIX: Ensure header content is aligned */
+        .detail-header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex; 
+            align-items: center; 
+            justify-content: flex-start;
+        }
+
+        /* FIX: Fix back button style and position it next to the title */
+        .back-button {
+            background: rgba(139, 92, 246, 0.3);
+            color: white;
+            border: 1px solid rgba(139, 92, 246, 0.5);
+            padding: 8px 16px; 
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            margin-bottom: 0; 
+            transition: all 0.3s ease;
+            flex-shrink: 0; 
+        }
+
+        .back-button:hover {
+            background: rgba(139, 92, 246, 0.5);
+            border-color: rgba(139, 92, 246, 0.8);
+        }
+
+        /* FIX: Set the desired smaller title size statically */
+        .detail-title {
+            font-size: 1.75rem; 
+            font-weight: 700;
+            line-height: 1.3;
+            margin-left: 20px; 
+            flex-grow: 1; 
+        }
+        
+        /* Collapsed styles removed */
+
+        .hero-image {
+            max-width: 1280px;
+            margin: -32px auto 0;
+            padding: 0 24px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .detail-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .accordion-item {
+            background: rgba(31, 41, 55, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .accordion-trigger {
+            width: 100%;
+            padding: 24px;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #f3f4f6;
+            transition: background 0.2s ease;
+        }
+
+        .accordion-trigger:hover {
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        .accordion-trigger svg {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content.active {
+            max-height: 5000px;
+        }
+
+        .accordion-inner {
+            padding: 24px;
+            color: #d1d5db;
+            line-height: 1.8;
+        }
+
+        .accordion-inner p {
+            margin-bottom: 12px;
+        }
+
+        .accordion-inner ul {
+            margin: 16px 0;
+            list-style: none;
+        }
+
+        .accordion-inner li {
+            display: flex;
+            align-items: start;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .accordion-inner li svg {
+            width: 20px;
+            height: 20px;
+            color: #34d399;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.2) 0%, rgba(180, 83, 9, 0.2) 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .example-label {
+            font-weight: 600;
+            color: #fbbf24;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .note-box {
+            background: rgba(37, 99, 235, 0.15);
+            border-left: 4px solid #3b82f6;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+            display: flex;
+            align-items: start;
+            gap: 12px;
+        }
+
+        .note-box svg {
+            width: 20px;
+            height: 20px;
+            color: #60a5fa;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .note-box p {
+            color: #bfdbfe;
+        }
+
+        .conclusion-box {
+            background: rgba(16, 185, 129, 0.15);
+            border-left: 4px solid #10b981;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+            display: flex;
+            align-items: start;
+            gap: 12px;
+        }
+
+        .conclusion-box svg {
+            width: 20px;
+            height: 20px;
+            color: #34d399;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .conclusion-box p {
+            color: #a7f3d0;
+        }
+
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 24px;
+            background: linear-gradient(90deg, rgba(30, 58, 138, 0.3) 0%, rgba(88, 28, 135, 0.3) 100%);
+            border-radius: 12px;
+            margin: 24px 0;
+            overflow-x: auto;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .flow-step {
+            flex: 1;
+            min-width: 120px;
+            padding: 16px;
+            background: rgba(31, 41, 55, 0.8);
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            color: #e5e7eb;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .flow-arrow {
+            font-size: 24px;
+            color: #a78bfa;
+            font-weight: bold;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            color: white;
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 16px;
+            border-bottom: 1px solid rgba(75, 85, 99, 0.5);
+            background: rgba(31, 41, 55, 0.6);
+            color: #d1d5db;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover td {
+            background: rgba(31, 41, 55, 0.9);
+        }
+
+        .explore-more-btn {
+            background: linear-gradient(90deg, #8b5cf6 0%, #ec4899 100%);
+            color: white;
+            padding: 20px 32px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            margin-top: 48px;
+        }
+
+        .explore-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.5);
+        }
+
+        .center-text {
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .main-heading {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .detail-title {
+                /* FIX: Ensure smaller size on mobile */
+                font-size: 1.5rem; 
+                margin-left: 12px;
+            }
+            
+            .back-button {
+                padding: 6px 12px;
+                font-size: 0.875rem;
+            }
+
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-diagram {
+                flex-direction: column;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="landingPage">
+        <section class="hero-gradient">
+            <div class="hero-icon">
+                <svg viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="2">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                </svg>
+            </div>
+            <h1 class="main-heading">ISB UNIT - 1</h1>
+            <p class="hero-description">
+            Explore the interactive learning modules with real-world examples.
+            </p>
+            <button class="btn-primary" onclick="scrollToTopics()">
+                Explore Topics
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </section>
+
+        <section class="topics-section" id="topics">
+            <div class="section-header">
+                <h2 class="section-title">Learning Modules</h2>
+                <p class="section-subtitle"></p>
+            </div>
+
+            <div class="topics-grid" id="topicsGrid"></div>
+        </section>
+
+        <footer class="footer">
+            <h3>Information System for Business</h3>
+            <p style="margin-bottom: 24px;">Start your journey in understanding Information Systems today</p>
+            <p style="font-size: 0.875rem;">© 2025 || Prof. Ankur Madan </p>
+        </footer>
+    </div>
+
+    <div id="topicDetailPage" class="detail-page hidden">
+        <div class="detail-header">
+            <div class="detail-header-content">
+                <button class="back-button" onclick="showLandingPage()">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/>
+                    </svg>
+                    
+                </button>
+                <h1 class="detail-title" id="detailTitle"></h1>
+            </div>
+        </div>
+        <div class="hero-image" id="heroImageContainer"></div>
+        <div class="detail-content">
+            <div class="accordion" id="accordionContainer"></div>
+            <div class="center-text">
+                <button class="explore-more-btn" onclick="showLandingPage()">
+                    Explore More Topics
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Topics Data
+        const topics = [
+            {
+                id: 'concept-definition',
+                title: 'Concept & Definition of IS',
+                description: 'Understanding Information Systems and their role in organizations',
+                icon: 'book'
+            },
+            {
+                id: 'data-information',
+                title: 'Data to Business Intelligence',
+                description: 'Journey from raw data to actionable business insights',
+                icon: 'database'
+            },
+            {
+                id: 'global-business',
+                title: 'IS in Global Business',
+                description: 'How IS enables worldwide business operations',
+                icon: 'globe'
+            },
+            {
+                id: 'components',
+                title: 'Components of IS',
+                description: 'Five key elements that make up an Information System',
+                icon: 'cpu'
+            },
+            {
+                id: 'management-systems',
+                title: 'Systems for Management',
+                description: 'Different IS types for various management levels',
+                icon: 'users'
+            },
+            {
+                id: 'enterprise-systems',
+                title: 'Enterprise Applications',
+                description: 'Systems that link and integrate entire organizations',
+                icon: 'network'
+            }
+        ];
+
+        // Topic Content Data
+        const topicContent = {
+            'concept-definition': {
+                title: 'Concept and Definition of Information System (IS)',
+                image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200',
+                sections: [
+                    {
+                        heading: 'Concept',
+                        type: 'info',
+                        content: [
+                            'An Information System (IS) is a structured combination of people, processes, data, and technology that work together to collect, store, process, and distribute information.',
+                            'The main purpose of an IS is to support decision-making, coordination, control, and analysis within an organization.'
+                        ],
+                        bullets: [
+                            'Gathering useful data from various sources',
+                            'Processing that data into meaningful information',
+                            'Making that information available to the right people at the right time'
+                        ]
+                    },
+                    {
+                        heading: 'Definition',
+                        type: 'info',
+                        content: [
+                            'An Information System is a system that combines hardware, software, people, and procedures to:'
+                        ],
+                        bullets: [
+                            'Collect data',
+                            'Process it into information',
+                            'Store it safely',
+                            'Distribute it for organizational use'
+                        ],
+                        note: 'It is not just about computers—it\'s about how technology supports human decision-making.'
+                    },
+                    {
+                        heading: 'Real-World Example: Retail Store POS System',
+                        type: 'example',
+                        content: [
+                            '<strong>Hardware:</strong> Barcode scanner, receipt printer, computer',
+                            '<strong>Software:</strong> Billing and inventory software',
+                            '<strong>Data:</strong> Product codes, price, quantity, sales amount',
+                            '<strong>People:</strong> Cashiers and managers',
+                            '<strong>Process:</strong> When a cashier scans an item, the system records the sale, updates the stock, and generates a bill.'
+                        ],
+                        conclusion: 'Thus, the IS helps the store track sales, manage inventory, and plan future orders efficiently.'
+                    }
+                ]
+            },
+            'data-information': {
+                title: 'Data, Information, Knowledge, and Business Intelligence (BI)',
+                image: 'https://images.unsplash.com/photo-1762279389020-eeeb69c25813?w=1200',
+                sections: [
+                    {
+                        heading: 'Understanding the Hierarchy',
+                        type: 'info',
+                        content: ['These four terms show how raw facts become business insights.']
+                    },
+                    {
+                        heading: '(a) Data',
+                        type: 'info',
+                        content: [
+                            '<strong>Meaning:</strong> Data refers to raw, unprocessed facts and figures that have no meaning on their own.',
+                            'It can be numbers, symbols, or words — but without context, it is meaningless.'
+                        ],
+                        example: 'A cashier scans items with prices — [45.99, 12.00, 5.50, 89.90, 15.00]. These are just raw numbers — data.'
+                    },
+                    {
+                        heading: '(b) Information',
+                        type: 'info',
+                        content: [
+                            '<strong>Meaning:</strong> When data is processed, organized, or structured, it becomes information.',
+                            'Information adds context and meaning to data.',
+                            'It answers questions like "Who?", "What?", "Where?", and "When?".'
+                        ],
+                        example: 'The total sales from those prices = ₹168.39. Now we know what the numbers represent — it\'s the total sale of a customer. Hence, data → information.'
+                    },
+                    {
+                        heading: '(c) Knowledge',
+                        type: 'info',
+                        content: [
+                            '<strong>Meaning:</strong> Knowledge is the understanding and insights gained from analyzing information.',
+                            'It helps in decision-making and answering "How?" or "Why?" something happens.'
+                        ],
+                        example: 'A manager studies sales data and finds that sales increase by 50% on weekends. Knowledge gained → Running weekend offers can further boost revenue.'
+                    },
+                    {
+                        heading: '(d) Business Intelligence (BI)',
+                        type: 'info',
+                        content: [
+                            '<strong>Meaning:</strong> BI is the use of technologies, tools, and techniques to analyze data and provide strategic insights.',
+                            'It converts data into actionable knowledge for decision-makers.',
+                            'BI combines dashboards, data mining, and visualization tools to help organizations make informed business decisions.'
+                        ],
+                        example: 'A BI dashboard shows that "Product X" sells more in East India but poorly in the West. Decision → Shift more stock to Eastern warehouses to meet demand.'
+                    },
+                    {
+                        heading: 'Summary Flow',
+                        type: 'flow',
+                        flow: ['Data', 'Processed', 'Information', 'Analyzed', 'Knowledge', 'Organized via BI', 'Decision-Making']
+                    }
+                ]
+            },
+            'global-business': {
+                title: 'Information Systems in Global Business',
+                image: 'https://images.unsplash.com/photo-1570106413982-7f2897b8d0c5?w=1200',
+                sections: [
+                    {
+                        heading: 'Overview',
+                        type: 'info',
+                        content: [
+                            'In today\'s global world, organizations operate in multiple countries.',
+                            'Information Systems help such businesses by connecting employees, customers, and suppliers worldwide.'
+                        ]
+                    },
+                    {
+                        heading: 'Key Functions',
+                        type: 'table',
+                        table: [
+                            { Function: 'Coordination', Role: 'Helps teams in different locations work together seamlessly.', Example: 'A multinational company uses ERP to manage all branches globally in real-time.' },
+                            { Function: 'Communication', Role: 'Enables quick and efficient communication across continents.', Example: 'Zoom, Microsoft Teams, or Google Meet for meetings.' },
+                            { Function: 'Market Expansion', Role: 'Allows small companies to reach international customers.', Example: 'A local artist in India sells paintings globally using Etsy or Amazon.' },
+                            { Function: 'Standardization', Role: 'Maintains uniform business practices across all locations.', Example: 'All regional branches use the same CRM software to manage customer data.' }
+                        ]
+                    },
+                    {
+                        heading: 'Key Advantages',
+                        type: 'info',
+                        bullets: [
+                            'Faster global communication',
+                            'Easier management of international operations',
+                            'Real-time decision-making and data sharing',
+                            'Cost reduction through automation and centralization'
+                        ]
+                    }
+                ]
+            },
+            'components': {
+                title: 'Components of Information Systems',
+                image: 'https://images.pexels.com/photos/577210/pexels-photo-577210.jpeg?w=1200',
+                sections: [
+                    {
+                        heading: 'Five Key Components',
+                        type: 'info',
+                        content: ['Every Information System has five key components that work together: Hardware, Software, Data, Process, People']
+                    },
+                    {
+                        heading: 'Components',
+                        type: 'table',
+                        table: [
+                            { Component: '1. Hardware', Description: 'Physical devices like computers, servers, input/output devices.', Example: 'Keyboard, monitor, router, printer.' },
+                            { Component: '2. Software', Description: 'Programs and applications that control hardware.', Example: 'Operating system, Excel, database system.' },
+                            { Component: '3. Data', Description: 'Raw facts stored and processed by the system.', Example: 'Customer names, prices, sales data.' },
+                            { Component: '4. Process/Procedures', Description: 'Steps or rules that describe how to use the system.', Example: 'How to record a sale, how to take backups.' },
+                            { Component: '5. People', Description: 'Users who operate and manage the system.', Example: 'Employees, managers, IT professionals.' }
+                        ]
+                    },
+                    {
+                        heading: 'Real-World Example: Online Shopping System',
+                        type: 'example',
+                        content: [
+                            '<strong>Hardware:</strong> Server, customer\'s smartphone',
+                            '<strong>Software:</strong> E-commerce app',
+                            '<strong>Data:</strong> Customer details, product info, payment details',
+                            '<strong>Process:</strong> Select → Add to Cart → Payment → Delivery',
+                            '<strong>People:</strong> Buyer, admin, delivery staff'
+                        ],
+                        conclusion: 'All components must work together for the system to function efficiently.'
+                    }
+                ]
+            },
+            'management-systems': {
+                title: 'Systems for Different Management Groups',
+                image: 'https://images.unsplash.com/photo-1608222351212-18fe0ec7b13b?w=1200',
+                sections: [
+                    {
+                        heading: 'Overview',
+                        type: 'info',
+                        content: [
+                            'Organizations have multiple management levels.',
+                            'Each level uses a different type of information system based on their roles and decisions.'
+                        ]
+                    },
+                    {
+                        heading: 'Management Level Systems',
+                        type: 'table',
+                        table: [
+                            { 'Management Level': 'Operational (Day-to-Day)', 'System Type': 'Transaction Processing System (TPS)', Purpose: 'Records routine, daily business transactions.', Example: 'Billing systems, payroll, ATM.' },
+                            { 'Management Level': 'Middle Level (Tactical)', 'System Type': 'Management Information System (MIS)', Purpose: 'Provides regular reports for monitoring performance.', Example: 'Monthly sales report, budget vs actual.' },
+                            { 'Management Level': 'Middle/Senior (Analytical)', 'System Type': 'Decision Support System (DSS)', Purpose: 'Helps in complex analysis and decision-making.', Example: 'Forecasting demand, pricing strategies.' },
+                            { 'Management Level': 'Senior Level (Strategic)', 'System Type': 'Executive Support System (ESS)', Purpose: 'Provides summarized data for planning and strategy.', Example: 'Dashboard showing profit, growth, market share.' }
+                        ]
+                    },
+                    {
+                        heading: 'Focus 1: Transaction Processing System (TPS)',
+                        type: 'info',
+                        bullets: [
+                            '<strong>Purpose:</strong> Handle daily transactions automatically',
+                            '<strong>Characteristics:</strong> High volume, repetitive, fast, accurate',
+                            '<strong>Example:</strong> An ATM records withdrawal, updates balance, and prints receipt instantly'
+                        ]
+                    },
+                    {
+                        heading: 'Focus 2: Business Intelligence (BI) Systems',
+                        type: 'info',
+                        bullets: [
+                            '<strong>Purpose:</strong> Combine MIS, DSS, and ESS functions to analyze business data',
+                            '<strong>Characteristics:</strong> Analytical, data-driven, helps in forecasting',
+                            '<strong>Example:</strong> A logistics company uses BI to find the fastest, cheapest delivery routes'
+                        ]
+                    }
+                ]
+            },
+            'enterprise-systems': {
+                title: 'Systems for Linking the Enterprise (Enterprise Applications)',
+                image: 'https://images.pexels.com/photos/257904/pexels-photo-257904.jpeg?w=1200',
+                sections: [
+                    {
+                        heading: 'Overview',
+                        type: 'info',
+                        content: [
+                            'Enterprise systems help integrate all departments—finance, HR, marketing, operations—into one connected platform.',
+                            'They ensure that data flows smoothly across the entire organization.'
+                        ]
+                    },
+                    {
+                        heading: 'Types of Enterprise Systems',
+                        type: 'table',
+                        table: [
+                            { 'System Type': 'Enterprise Resource Planning (ERP)', Function: 'Integrates all business processes (HR, finance, production, sales).', Benefit: 'Centralized data and better coordination.', Example: 'SAP, Oracle, Microsoft Dynamics.' },
+                            { 'System Type': 'Supply Chain Management (SCM)', Function: 'Manages product flow from suppliers to customers.', Benefit: 'Reduces inventory cost, improves delivery.', Example: 'Automatically reorders materials when stock is low.' },
+                            { 'System Type': 'Customer Relationship Management (CRM)', Function: 'Manages customer interactions (sales, support, feedback).', Benefit: 'Improves customer service and loyalty.', Example: 'Salesforce tracks all customer communication.' },
+                            { 'System Type': 'Knowledge Management System (KMS)', Function: 'Stores and shares employee knowledge and experience.', Benefit: 'Saves expertise and promotes learning.', Example: 'Company Wiki with problem-solving guides.' }
+                        ]
+                    },
+                    {
+                        heading: 'Why Enterprise Applications Are Important',
+                        type: 'info',
+                        bullets: [
+                            'Reduce duplication of data and efforts',
+                            'Improve accuracy and coordination',
+                            'Provide real-time business insights',
+                            'Help in faster, data-driven decision-making'
+                        ]
+                    }
+                ]
+            }
+        };
+
+        // Icon SVG paths
+        const icons = {
+            book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+            database: '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>',
+            globe: '<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
+            cpu: '<rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/>',
+            users: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+            network: '<rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M12 12V8"/><path d="M12 16v-4h-2"/><path d="M12 12h2"/>'
+        };
+
+        // Initialize landing page
+        function initLandingPage() {
+            const grid = document.getElementById('topicsGrid');
+            topics.forEach(topic => {
+                const card = document.createElement('div');
+                card.className = 'topic-card';
+                card.onclick = () => showTopicDetail(topic.id);
+                card.innerHTML = `
+                    <div class="topic-icon">
+                        <svg viewBox="0 0 24 24">${icons[topic.icon]}</svg>
+                    </div>
+                    <h3 class="topic-title">${topic.title}</h3>
+                    <p class="topic-description">${topic.description}</p>
+                    <div class="learn-more">
+                        Learn More
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Show topic detail
+        function showTopicDetail(topicId) {
+            const content = topicContent[topicId];
+            if (!content) return;
+
+            document.getElementById('landingPage').classList.add('hidden');
+            document.getElementById('topicDetailPage').classList.remove('hidden');
+            document.getElementById('detailTitle').textContent = content.title;
+
+            // Hero image
+            const heroContainer = document.getElementById('heroImageContainer');
+            heroContainer.innerHTML = content.image ? `<img src="${content.image}" alt="${content.title}">` : '';
+
+            // Accordion
+            const accordion = document.getElementById('accordionContainer');
+            accordion.innerHTML = '';
+
+            content.sections.forEach((section, index) => {
+                const item = document.createElement('div');
+                item.className = 'accordion-item';
+
+                const iconType = section.type === 'example' ? 'lightbulb' : 'info';
+                const iconColor = section.type === 'example' ? '#eab308' : '#764ba2';
+                const iconSvg = iconType === 'lightbulb' 
+                    ? '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>'
+                    : '<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>';
+
+                let contentHTML = '';
+
+                // Regular content
+                if (section.content) {
+                    section.content.forEach(text => {
+                        contentHTML += `<p>${text}</p>`;
+                    });
+                }
+
+                // Bullets
+                if (section.bullets) {
+                    contentHTML += '<ul>';
+                    section.bullets.forEach(bullet => {
+                        contentHTML += `
+                            <li>
+                                <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                                <span>${bullet}</span>
+                            </li>
+                        `;
+                    });
+                    contentHTML += '</ul>';
+                }
+
+                // Example
+                if (section.example) {
+                    contentHTML += `
+                        <div class="example-box">
+                            <div class="example-label">
+                                <svg viewBox="0 0 24 24" width="20" height="20" stroke="#92400e" fill="none" stroke-width="2">
+                                    <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>
+                                </svg>
+                                Example:
+                            </div>
+                            <p>${section.example}</p>
+                        </div>
+                    `;
+                }
+
+                // Flow
+                if (section.flow) {
+                    contentHTML += '<div class="flow-diagram">';
+                    section.flow.forEach((step, i) => {
+                        contentHTML += `<div class="flow-step">${step}</div>`;
+                        if (i < section.flow.length - 1) {
+                            contentHTML += '<div class="flow-arrow">→</div>';
+                        }
+                    });
+                    contentHTML += '</div>';
+                }
+
+                // Table
+                if (section.table) {
+                    const headers = Object.keys(section.table[0]);
+                    contentHTML += '<table class="data-table"><thead><tr>';
+                    headers.forEach(header => {
+                        contentHTML += `<th>${header}</th>`;
+                    });
+                    contentHTML += '</tr></thead><tbody>';
+                    section.table.forEach(row => {
+                        contentHTML += '<tr>';
+                        headers.forEach(header => {
+                            contentHTML += `<td>${row[header]}</td>`;
+                        });
+                        contentHTML += '</tr>';
+                    });
+                    contentHTML += '</tbody></table>';
+                }
+
+                // Note
+                if (section.note) {
+                    contentHTML += `
+                        <div class="note-box">
+                            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+                            </svg>
+                            <p><strong>Note:</strong> ${section.note}</p>
+                        </div>
+                    `;
+                }
+
+                // Conclusion
+                if (section.conclusion) {
+                    contentHTML += `
+                        <div class="conclusion-box">
+                            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <p><strong>Conclusion:</strong> ${section.conclusion}</p>
+                        </div>
+                    `;
+                }
+
+                item.innerHTML = `
+                    <button class="accordion-trigger" onclick="toggleAccordion(${index})">
+                        <svg viewBox="0 0 24 24" stroke="${iconColor}" fill="none" stroke-width="2">
+                            ${iconSvg}
+                        </svg>
+                        <span>${section.heading}</span>
+                    </button>
+                    <div class="accordion-content" id="accordion-${index}">
+                        <div class="accordion-inner">
+                            ${contentHTML}
+                        </div>
+                    </div>
+                `;
+                accordion.appendChild(item);
+            });
+
+            window.scrollTo(0, 0);
+        }
+
+        // Show landing page
+        function showLandingPage() {
+            document.getElementById('landingPage').classList.remove('hidden');
+            document.getElementById('topicDetailPage').classList.add('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        // Toggle accordion
+        function toggleAccordion(index) {
+            const content = document.getElementById(`accordion-${index}`);
+            content.classList.toggle('active');
+        }
+
+        // Scroll to topics
+        function scrollToTopics() {
+            document.getElementById('topics').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Collapsible header on scroll - REMOVED COLLAPSE LOGIC
+        window.addEventListener('scroll', function() {
+            // This function is kept but all logic that modifies the header based on scroll
+            // (e.g., adding/removing the 'collapsed' class) has been removed to ensure a static header.
+        });
+
+        // Initialize
+        initLandingPage();
+    </script>
+</body>
+</html>
